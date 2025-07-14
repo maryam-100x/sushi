@@ -1,0 +1,160 @@
+/* Reset & base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', sans-serif;
+  background: #fffdf4;
+  color: #333;
+}
+
+/* Main wrapper */
+.sushi-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+  font-size: 3rem;
+  margin-top: 1rem;
+  color: #ff6699;
+  text-shadow: 1px 1px #00000030;
+}
+
+/* Sushi bar area */
+.sushi-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #f8e0b0;
+  border: 5px solid #e08f62;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  max-width: 800px;
+  min-height: 250px;
+}
+
+/* Sushi images */
+.sushi-img {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.2s ease;
+}
+
+.sushi-img:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* Bottom buttons */
+.buttons {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.buttons a {
+  text-decoration: none;
+  font-weight: bold;
+  background: #fff0f0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #ffbcbc;
+  color: #ff4b4b;
+  transition: all 0.2s ease;
+}
+
+.buttons a:hover {
+  background: #ffe0e0;
+  transform: scale(1.1);
+}
+
+/* Footer copyable CA */
+/* Other styles stay the same… */
+
+/* Click-to-copy CA now above buttons */
+.copy-section {
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  border: 1px solid #e8c87c;
+  background: #fff8d8;
+  transition: background 0.3s ease;
+}
+
+.copy-section:hover {
+  background: #fff1b8;
+}
+
+/* Add to existing CSS */
+
+/* Conveyor Sushi Animation */
+.conveyor-sushi {
+  position: absolute;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  animation: conveyorSushiMove linear infinite;
+  z-index: 2;
+}
+
+.conveyor-sushi img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  animation: sushiWobble 1s ease-in-out infinite alternate;
+}
+
+@keyframes conveyorSushiMove {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100px); }
+}
+
+@keyframes sushiWobble {
+  from { transform: translateY(0) rotate(-5deg); }
+  to { transform: translateY(-5px) rotate(5deg); }
+}
+
+/* Language Toggle */
+.language-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 2px solid #ff9999;
+  border-radius: 20px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: bold;
+  color: #ff5a5a;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.language-toggle:hover {
+  background: #fff0f0;
+  transform: scale(1.05);
+}
+
+/* Wider Sushi Counter */
+.sushi-counter {
+  max-width: 700px; /* Increased from 600px */
+}
+
+/* Wider Sushi Plate */
+.sushi-plate {
+  padding: 1.5rem 2rem; /* More horizontal padding */
+}

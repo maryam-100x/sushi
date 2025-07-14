@@ -1,0 +1,347 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'M PLUS Rounded 1c', 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Sushi Restaurant Theme */
+.sushi-restaurant {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #fff5f5;
+  overflow: hidden;
+}
+
+/* Conveyor Belt Background */
+.conveyor-belt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: #e8c87c;
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      #e8c87c,
+      #e8c87c 30px,
+      #e0a84e 30px,
+      #e0a84e 60px
+    );
+  z-index: 1;
+  animation: conveyorMove 15s linear infinite;
+}
+
+@keyframes conveyorMove {
+  from { background-position: 0 0; }
+  to { background-position: 60px 0; }
+}
+
+/* Flying Sushi Animation */
+.flying-sushi {
+  position: absolute;
+  top: -100px;
+  z-index: 2;
+  animation-name: flySushi;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+.flying-sushi img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transform: rotate(0deg);
+  animation: spinSushi 2s linear infinite;
+}
+
+@keyframes flySushi {
+  0% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spinSushi {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Sushi Counter */
+.sushi-counter {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.1),
+    inset 0 0 0 5px #ffcccc,
+    inset 0 0 0 8px #ffffff;
+  z-index: 10;
+  border: 2px solid #ff9999;
+  text-align: center;
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
+/* Noren Curtain */
+.noren-curtain {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 60px;
+  background: linear-gradient(to bottom, #ff6b6b, #ff8e8e);
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  z-index: -1;
+}
+
+.noren-text {
+  transform: rotate(0deg);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+/* Logo */
+.logo {
+  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+  color: #ff5a5a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logo-sushi {
+  font-weight: 800;
+  text-shadow: 2px 2px 0px #ffcccc;
+}
+
+.logo-emoji {
+  width: 40px;
+  height: 40px;
+  animation: bounce 2s infinite;
+  object-fit: contain;
+  display: inline-block;
+  margin-bottom: -0.5rem;
+}
+
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+}
+
+/* Sushi Plate */
+.sushi-plate {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #fff8f8;
+  border-radius: 12px;
+  border: 2px dashed #ffb6b6;
+  position: relative;
+}
+
+.sushi-plate::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  filter: blur(5px);
+  opacity: 0.7;
+}
+
+.sushi-piece {
+  width: 70px;
+  height: 70px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.1));
+}
+
+.sushi-piece:hover {
+  transform: translateY(-10px) rotate(15deg);
+  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.2));
+}
+
+/* Menu Board */
+.menu-board {
+  background: #fff0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border: 2px solid #ffb6b6;
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-label {
+  font-weight: bold;
+  color: #ff6b6b;
+  font-size: 1.1rem;
+}
+
+.menu-value {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ffcccc;
+  font-family: monospace;
+  font-size: 0.9rem;
+  word-break: break-all;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-value:hover {
+  background: #fff8f8;
+  transform: scale(1.02);
+}
+
+.menu-value.copied {
+  background: #e0ffe0;
+  border-color: #a0e0a0;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.twitter {
+  background: #000;
+  color: white;
+}
+
+.chart {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+}
+
+.bonk {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: #333;
+}
+
+/* Chef Mascot */
+.chef-mascot {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  z-index: 20;
+}
+
+.chef-hat {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 30px;
+  background: white;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+}
+
+.chef-face {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .logo {
+    font-size: 2.5rem;
+  }
+  
+  .sushi-piece {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chef-mascot {
+    right: -20px;
+    bottom: -20px;
+    transform: scale(0.8);
+  }
+}
+
