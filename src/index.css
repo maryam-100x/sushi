@@ -8,13 +8,20 @@
 body, html {
   height: 100%;
   width: 100%;
-  overflow: hidden;
   font-family: 'M PLUS Rounded 1c', 'Comic Sans MS', cursive, sans-serif;
+  overflow: hidden;
 }
+
+@media (max-width: 600px) {
+  body, html {
+    overflow-y: auto;
+  }
+}
+
 
 /* Sushi Restaurant Theme */
 .sushi-restaurant {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -22,7 +29,20 @@ body, html {
   position: relative;
   background-color: #fff5f5;
   overflow: hidden;
+  padding: 2rem;
+  box-sizing: border-box;
 }
+
+
+@media (max-width: 600px) {
+  .sushi-restaurant {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: visible;
+  }
+}
+
 
 /* Conveyor Belt Background */
 .conveyor-belt {
@@ -106,6 +126,7 @@ body, html {
   text-align: center;
   transform: scale(1.2);
   transform-origin: center;
+    margin-top: -120px;
 }
 
 /* Noren Curtain */
@@ -345,3 +366,34 @@ body, html {
   }
 }
 
+.about-blurb {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #ff6b6b;
+  background: #fff0f0;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #ffb6b6;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+  body, html {
+    overflow-y: auto;
+  }
+
+  .sushi-restaurant {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2rem 1rem;
+  }
+
+  .sushi-counter {
+    transform: scale(1);
+    padding: 1.5rem;
+    margin: auto;
+  }
+}

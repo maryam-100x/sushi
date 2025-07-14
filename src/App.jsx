@@ -178,6 +178,13 @@ function App() {
             {translations[language].bonk}
           </a>
         </div>
+        
+        <div className="about-blurb">
+  {language === 'EN' 
+    ? "sushi is launching on bonk — it's cute, delicious, and everyone loves it." 
+    : "すしはBONKに登場！かわいくて、おいしくて、みんな大好き。"}
+</div>
+
 
         <div className="chef-mascot">
           <div className="chef-hat"></div>
