@@ -99,28 +99,6 @@ body, html {
 
 /* Add to existing CSS */
 
-/* Conveyor Sushi Animation */
-.conveyor-sushi {
-  position: absolute;
-  bottom: 20px;
-  width: 60px;
-  height: 60px;
-  animation: conveyorSushiMove linear infinite;
-  z-index: 2;
-}
-
-.conveyor-sushi img {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-  animation: sushiWobble 1s ease-in-out infinite alternate;
-}
-
-@keyframes conveyorSushiMove {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100px); }
-}
-
 @keyframes sushiWobble {
   from { transform: translateY(0) rotate(-5deg); }
   to { transform: translateY(-5px) rotate(5deg); }
