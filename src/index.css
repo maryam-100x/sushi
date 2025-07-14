@@ -398,3 +398,10 @@ body, html {
         margin-top: 40px;
   }
 }
+
+@media (min-width: 800px) and (max-width: 1400px) {
+  .sushi-counter {
+    transform: scale(0.9);
+    margin-top: -80px;
+  }
+}
