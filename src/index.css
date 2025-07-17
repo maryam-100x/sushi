@@ -666,7 +666,7 @@ body, html {
 @media (min-width: 1920px) {
   .sushi-counter {
     transform: scale(1.1);
-    margin-top: -2rem;
+    margin-top: -5rem;
   }
 }
 
@@ -674,6 +674,6 @@ body, html {
   .sushi-counter:has(.about-content) {
     transform: scale(0.85);
     transform-origin: top center;
-    margin-top: 4rem;
+    margin-top: 0rem;
   }
 }
