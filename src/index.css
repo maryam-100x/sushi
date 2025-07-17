@@ -652,12 +652,13 @@ body, html {
     transform: scale(0.78);
     transform-origin: top center;
     padding: 0 !important;
-    margin-top: -30px;
+    margin-top: 30px;
   }
 
   .sushi-counter {
     transform: none !important;
     margin-top: 0 !important;
+        transform: scale(0.88);
   }
 }
 
