@@ -653,6 +653,7 @@ body, html {
     transform-origin: top center;
     padding: 0 !important;
     margin-top: 30px;
+        margin-bottom: -100px;
   }
 
   .sushi-counter {
