@@ -7,23 +7,34 @@ function App() {
   const [flyingSushi, setFlyingSushi] = useState([]);
   const [language, setLanguage] = useState('EN');
   const [conveyorSushi, setConveyorSushi] = useState([]);
+  const [currentView, setCurrentView] = useState('main'); // 'main' or 'about'
   const contractAddress = 'CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk';
 
   // Translations
   const translations = {
     EN: {
       caLabel: "CA:",
-      copied: "Copied to clipboard!",
+      copied: "Copied!",
       twitter: "𝕏",
       chart: "DEX",
-      bonk: "letsbonk.fun"
+      bonk: "letsbonk.fun",
+      about: "About",
+      back: "Back",
+      aboutTitle: "About Sushi",
+      aboutText: "Sushi is launching on BONK — it's cute, delicious, and everyone loves it! Here's what the BONK Dev had to say about our beloved sushi:",
+      ceoEndorsement: "Bonk Dev Endorsement"
     },
     JP: {
       caLabel: "コントラクト:",
       copied: "コピーされました!",
       twitter: "ツイッター",
       chart: "チャート",
-      bonk: "ボンクパーティー"
+      bonk: "ボンクパーティー",
+      about: "詳細",
+      back: "戻る",
+      aboutTitle: "すしについて",
+      aboutText: "すしはBONKに登場！かわいくて、おいしくて、みんな大好き。BONKのDevが私たちの愛するすしについて語ったことをご覧ください：",
+      ceoEndorsement: "BONK Dev"
     }
   };
 
@@ -35,6 +46,14 @@ function App() {
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'EN' ? 'JP' : 'EN');
+  };
+
+  const showAbout = () => {
+    setCurrentView('about');
+  };
+
+  const showMain = () => {
+    setCurrentView('main');
   };
 
   useEffect(() => {
@@ -71,7 +90,6 @@ function App() {
     };
   }, [flyingSushi.length, conveyorSushi.length]);
 
-  // Remove finished animations
   useEffect(() => {
     const cleanupInterval = setInterval(() => {
       const now = Date.now();
@@ -88,6 +106,120 @@ function App() {
 
     return () => clearInterval(cleanupInterval);
   }, []);
+
+  const renderMainView = () => (
+    <>
+      <div className="noren-curtain">
+        <div className="noren-text">すし</div>
+      </div>
+      
+      <h1 className="logo">
+        <img src="/sushi/sushi6.png" alt="logo sushi" className="logo-emoji" />
+        <span className="logo-sushi">sushi</span>
+        <img src="/sushi/sushi6.png" alt="logo sushi" className="logo-emoji" />
+      </h1>
+
+      <div className="sushi-plate">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <img
+            key={i}
+            src={`/sushi/sushi${i}.png`}
+            alt={`sushi${i}`}
+            className={`sushi-piece sushi-type-${i}`}
+          />
+        ))}
+      </div>
+
+      <div className="menu-board">
+        <div className="menu-item">
+          <span className="menu-label">{translations[language].caLabel}</span>
+          <div 
+            className={`menu-value ${copied ? 'copied' : ''}`} 
+            onClick={handleCopy}
+          >
+            {copied ? translations[language].copied : contractAddress}
+          </div>
+        </div>
+      </div>
+
+      <div className="action-buttons">
+        <a href="https://x.com/sushicoin" target="_blank" rel="noopener noreferrer" className="social-btn twitter">
+          {translations[language].twitter}
+        </a>
+        <a href="https://dexscreener.com/solana/CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk" target="_blank" rel="noopener noreferrer" className="social-btn chart">
+          {translations[language].chart}
+        </a>
+        <a href="https://letsbonk.fun/token/CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk" target="_blank" rel="noopener noreferrer" className="social-btn bonk">
+          {translations[language].bonk}
+        </a>
+      </div>
+      
+      <div className="about-blurb">
+        {language === 'EN' 
+          ? "sushi is launching on bonk — it's cute, delicious, and everyone loves it." 
+          : "すしはBONKに登場！かわいくて、おいしくて、みんな大好き。"}
+      </div>
+
+      <div className="about-button-container">
+        <button className="about-button" onClick={showAbout}>
+          {translations[language].about}
+        </button>
+      </div>
+
+      <div className="chef-mascot">
+        <div className="chef-hat"></div>
+        <div className="chef-face">(ᵔᴥᵔ)</div>
+      </div>
+    </>
+  );
+
+  const renderAboutView = () => (
+    <>
+      <button className="back-button" onClick={showMain}>
+        ← {translations[language].back}
+      </button>
+      
+      <div className="about-content">
+        <h1 className="about-title">
+          <img src="/sushi/sushi6.png" alt="logo sushi" className="logo-emoji" />
+          {translations[language].aboutTitle}
+          <img src="/sushi/sushi6.png" alt="logo sushi" className="logo-emoji" />
+        </h1>
+
+        <div className="about-text">
+          {translations[language].aboutText}
+        </div>
+
+        <div className="ceo-endorsement">
+          <h3 className="endorsement-title">{translations[language].ceoEndorsement}</h3>
+          <div className="solport-container">
+<a 
+  href="https://x.com/search?q=from%3ASolportTom%20sushi&src=typed_query" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <img 
+    src="/solport.jpg" 
+    alt="Solport endorsement" 
+    className="solport-image" 
+  />
+</a>
+          </div>
+        </div>
+
+        <div className="sushi-plate">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <img
+              key={i}
+              src={`/sushi/sushi${i}.png`}
+              alt={`sushi${i}`}
+              className={`sushi-piece sushi-type-${i}`}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <div className="sushi-restaurant">
@@ -135,63 +267,10 @@ function App() {
 
       {/* Main content */}
       <div className="sushi-counter">
-        <div className="noren-curtain">
-          <div className="noren-text">すし</div>
-        </div>
-        
-        <h1 className="logo">
-          <img src="/sushi/sushi6.png" alt="logo sushi" className="logo-emoji" />
-          <span className="logo-sushi">sushi</span>
-          <img src="/sushi/sushi6.png" alt="logo sushi" className="logo-emoji" />
-        </h1>
-
-        <div className="sushi-plate">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <img
-              key={i}
-              src={`/sushi/sushi${i}.png`}
-              alt={`sushi${i}`}
-              className={`sushi-piece sushi-type-${i}`}
-            />
-          ))}
-        </div>
-
-        <div className="menu-board">
-          <div className="menu-item">
-            <span className="menu-label">{translations[language].caLabel}</span>
-            <div 
-              className={`menu-value ${copied ? 'copied' : ''}`} 
-              onClick={handleCopy}
-            >
-              {copied ? translations[language].copied : contractAddress}
-            </div>
-          </div>
-        </div>
-
-        <div className="action-buttons">
-          <a href="https://x.com/sushicoin" target="_blank" rel="noopener noreferrer" className="social-btn twitter">
-            {translations[language].twitter}
-          </a>
-          <a href="https://dexscreener.com/solana/CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk" target="_blank" rel="noopener noreferrer" className="social-btn chart">
-            {translations[language].chart}
-          </a>
-          <a href="https://letsbonk.fun/token/CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk" target="_blank" rel="noopener noreferrer" className="social-btn bonk">
-            {translations[language].bonk}
-          </a>
-        </div>
-        
-        <div className="about-blurb">
-  {language === 'EN' 
-    ? "sushi is launching on bonk — it's cute, delicious, and everyone loves it." 
-    : "すしはBONKに登場！かわいくて、おいしくて、みんな大好き。"}
-</div>
-
-
-        <div className="chef-mascot">
-          <div className="chef-hat"></div>
-          <div className="chef-face">(ᵔᴥᵔ)</div>
-        </div>
+        {currentView === 'main' ? renderMainView() : renderAboutView()}
       </div>
+
+
     </div>
   );
 }
