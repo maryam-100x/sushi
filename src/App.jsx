@@ -8,7 +8,7 @@ function App() {
   const [language, setLanguage] = useState('EN');
   const [conveyorSushi, setConveyorSushi] = useState([]);
   const [currentView, setCurrentView] = useState('main'); // 'main' or 'about'
-  const contractAddress = 'Soon';
+  const contractAddress = 'CWQEcCEEqSFpNvNA8aWWbmFw6VRGkYrzD2dH5ZQAbonk';
 
   // Translations
   const translations = {
