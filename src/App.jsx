@@ -8,7 +8,7 @@ function App() {
   const [language, setLanguage] = useState('EN');
   const [conveyorSushi, setConveyorSushi] = useState([]);
   const [currentView, setCurrentView] = useState('main'); // 'main' or 'about'
-  const contractAddress = 'CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk';
+  const contractAddress = 'Soon';
 
   // Translations
   const translations = {
@@ -143,13 +143,13 @@ function App() {
       </div>
 
       <div className="action-buttons">
-        <a href="https://x.com/sushicoin" target="_blank" rel="noopener noreferrer" className="social-btn twitter">
+        <a href="https://x.com/sushionbonk" target="_blank" rel="noopener noreferrer" className="social-btn twitter">
           {translations[language].twitter}
         </a>
-        <a href="https://dexscreener.com/solana/CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk" target="_blank" rel="noopener noreferrer" className="social-btn chart">
+        <a href={`https://dexscreener.com/solana/${contractAddress}`} target="_blank" rel="noopener noreferrer" className="social-btn chart">
           {translations[language].chart}
         </a>
-        <a href="https://letsbonk.fun/token/CDBdbNqmrLu1PcgjrFG52yxg71QnFhBZcUE6PSFdbonk" target="_blank" rel="noopener noreferrer" className="social-btn bonk">
+        <a href={`https://letsbonk.fun/token/${contractAddress}`} target="_blank" rel="noopener noreferrer" className="social-btn bonk">
           {translations[language].bonk}
         </a>
       </div>
